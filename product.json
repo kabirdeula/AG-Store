@@ -1,0 +1,56 @@
+[{
+        "id": 1,
+        "title": "Beige Sunglasses",
+        "category": "Sunglasses",
+        "price": 700,
+        "description": null,
+        "image": "images/product-1.jpg",
+        "imgSrc": "MYKITA",
+        "altText": "Sunglasses"
+    },
+    {
+        "id": 2,
+        "title": "Glov Scrunchies",
+        "category": "Scrunchies",
+        "price": 75,
+        "description": null,
+        "image": "images/product-2.jpg",
+        "imgSrc": "Maquibeauty"
+    },
+    {
+        "id": 3,
+        "title": "Bhai Masala",
+        "category": "Bhai Tika",
+        "price": 1250,
+        "description": null,
+        "image": "images/product-3.jpg",
+        "imgSrc": "Pricemandu"
+    },
+    {
+        "id": 4,
+        "title": "Didi lai Koseli",
+        "category": "Bhai Tika",
+        "price": 1800,
+        "description": null,
+        "image": "images/product-4.jpg",
+        "imgSrc": "Etsy"
+    },
+    {
+        "id": 5,
+        "title": "Bhai lai Koseli",
+        "category": "Bhai Tika",
+        "price": 1800,
+        "description": null,
+        "image": "images/product-5.jpg",
+        "imgSrc": "Pexels"
+    },
+    {
+        "id": 6,
+        "title": "Dog Scarf Collar",
+        "category": "Dog",
+        "price": 120,
+        "description": null,
+        "image": "images/product-6.jpg",
+        "imgSrc": "WishImage"
+    }
+]
