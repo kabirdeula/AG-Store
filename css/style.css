@@ -260,7 +260,7 @@ figure {
 }
 
 .fh5co-nav ul li.has-dropdown {
-    position: relative;
+    position: absolute;
 }
 
 .fh5co-nav ul li.has-dropdown .dropdown {
@@ -301,7 +301,7 @@ figure {
 }
 
 .fh5co-nav ul li.has-dropdown .dropdown li {
-    display: block;
+    display: inline-block;
     margin-bottom: 7px;
 }
 

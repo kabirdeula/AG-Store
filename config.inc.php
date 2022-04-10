@@ -8,8 +8,6 @@ $database = 'agstore';
 $conn = new mysqli($host, $username, $password, $database);
 
 if(!$conn){
-    die('Could not Connect MySql Server:' .mysql_error());
+    die('Could not Connect MySql Server:' .mysqli_connect_error());
 }
-
-
 ?>

@@ -21,8 +21,16 @@ if(isset($_POST['submit'])){
         $result = mysqli_query($conn, $sql);
         $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
         $count = mysqli_num_rows($result);
+        $adminSQL = "SELECT * FROM users WHERE userName='$username' AND userPassword='$password' AND userType='admin'";
+        $adminResult = mysqli_query($conn, $adminSQL);
+        $adminRow = mysqli_fetch_array($result, MYSQLI_ASSOC);
+        $adminCount = mysqli_num_rows($adminResult);
         
-        if($count == 1){
+        if($adminCount == 1){
+            $_SESSION['admin'] = $username;
+            $_SESSION['adminlog'] = true;
+            header("location: ./admin/index.php");
+        }else if($count == 1){
             $_SESSION['userName'] = $username;
             $_SESSION['loggedIn'] = true;
             header("location: index.php");
@@ -61,8 +69,8 @@ if(isset($_POST['submit'])){
                     <img src="./images/favicon.png" alt="" id="imgBox" />
                 </div>
                 <div class="formBox">
-                    <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" name="contact" method="POST" data-netlify="true">
-                    <?php echo "<h4 style='color: red; text-align: center;padding:25px;margin:5px;background:#d3d3d3;border-radius:20px;'>".$message?>
+                    <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" name="contact" method="POST">
+                    <?php if($message) echo "<h4 style='color: red; text-align: center;padding:25px;margin:5px;background:#d3d3d3;border-radius:20px;'>".$message?>
                         <h2 id="h2-signin-up">Sign In</h2>
                         <input id="form-ask" type="text" placeholder="<?php echo $usernameError?>" name="userName">
                         <input id="form-password" type="password" placeholder="<?php echo $passwordError ?>" name="userPassword">
