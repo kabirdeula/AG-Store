@@ -178,12 +178,8 @@ $messageCount = $count3 -> fetch_array();
                             </a>
 
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                            <a class="dropdown-item" href="./php/createproducts.php">
                                 <i class="fas fa-shopping-cart fa-sm fa-fw mr-2 text-gray-400"></i> Products
-                            </a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                                <i class="fas fa-table fa-sm fa-fw mr-2 text-gray-400"></i> Categories
                             </a>
                         </div>
                     </div>
@@ -253,7 +249,7 @@ $messageCount = $count3 -> fetch_array();
                 <footer class="sticky-footer bg-white">
                     <div class="container my-auto">
                         <div class="copyright text-center my-auto">
-                            <span>Copyright &copy; Your Website 2021</span>
+                            <span>&copy; 2020 - <?php echo date("Y")?> AG Store. All Rights Reserved.</span>
                         </div>
                     </div>
                 </footer>

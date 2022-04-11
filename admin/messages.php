@@ -159,7 +159,6 @@ require '../config.inc.php';
                     <div class="card shadow mb4">
                         <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold text-primary">Messages</h6>
-                            <h6 class="float-right"><a href="./php/createproducts.php" title="New Products" class="btn btn-primary"><i class="fa fa-plus fa-sm"> Add New Products</i></a></h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -183,9 +182,6 @@ require '../config.inc.php';
                                                     while($row = $result -> fetch_array()){
                                                         echo '<tr>';
                                                         echo '<td>';
-                                                        echo '<a href="./php/editmessage.php?mID='.$row['mID'].'" title="Edit Record" class="btn btn-primary mr-2">';
-                                                        echo '<i class="fa fa-pencil-alt"></i>';
-                                                        echo '</a>';
                                                         echo '<a href="./php/deletemessage.php?mID='.$row['mID'].'" title="Delete Record" class="btn btn-danger">';
                                                         echo '<i class="fa fa-trash"></i>';
                                                         echo '</a>';
@@ -214,7 +210,7 @@ require '../config.inc.php';
                 <footer class="sticky-footer bg-white">
                     <div class="container my-auto">
                         <div class="copyright text-center my-auto">
-                            <span>Copyright &copy; Your Website 2021</span>
+                            <span>&copy; 2020 - <?php echo date("Y")?> AG Store. All Rights Reserved.</span>
                         </div>
                     </div>
                 </footer>

@@ -14,24 +14,24 @@ require 'config.inc.php';
     <meta name="keywords" content="agstore, handmade, diy, ecommerce, kabirdeula, bijinamaharjan, aayushamaharjan" />
 
     <!-- Animate.css -->
-    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="./css/animate.css">
     <!-- Icomoon Icon Fonts-->
-    <link rel="stylesheet" href="css/icomoon.css">
+    <link rel="stylesheet" href="./css/icomoon.css">
     <!-- Bootstrap  -->
-    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="./css/bootstrap.css">
 
     <!-- Flexslider  -->
-    <link rel="stylesheet" href="css/flexslider.css">
+    <link rel="stylesheet" href="./css/flexslider.css">
 
     <!-- Owl Carousel  -->
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="./css/owl.carousel.min.css">
+    <link rel="stylesheet" href="./css/owl.theme.default.min.css">
 
     <!-- Theme style  -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="./css/style.css">
 
     <!-- Modernizr JS -->
-    <script src="js/modernizr-2.6.2.min.js"></script>
+    <script src="./js/modernizr-2.6.2.min.js"></script>
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="./images/favicon.png" type="image/x-icon">
@@ -366,31 +366,28 @@ require 'config.inc.php';
     </div>
 
     <!-- jQuery -->
-    <script defer src="js/jquery.min.js"></script>
+    <script defer src="./js/jquery.min.js"></script>
 
     <!-- jQuery Easing -->
-    <script defer src="js/jquery.easing.1.3.js"></script>
+    <script defer src="./js/jquery.easing.1.3.js"></script>
 
     <!-- Bootstrap -->
-    <script defer src="js/bootstrap.min.js"></script>
+    <script defer src="./js/bootstrap.min.js"></script>
 
     <!-- Waypoints -->
-    <script defer src="js/jquery.waypoints.min.js"></script>
+    <script defer src="./js/jquery.waypoints.min.js"></script>
 
     <!-- Carousel -->
-    <script defer src="js/owl.carousel.min.js"></script>
+    <script defer src="./js/owl.carousel.min.js"></script>
 
     <!-- countTo -->
-    <script defer src="js/jquery.countTo.js"></script>
+    <script defer src="./js/jquery.countTo.js"></script>
 
     <!-- Flexslider -->
-    <script defer src="js/jquery.flexslider-min.js"></script>
+    <script defer src="./js/jquery.flexslider-min.js"></script>
 
     <!-- Main -->
-    <script defer src="js/main.js"></script>
-
-    <!-- Products -->
-    <!-- <script defer src="js/products.js"></script> -->
+    <script defer src="./js/main.js"></script>
 
 </body>
 

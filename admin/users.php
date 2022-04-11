@@ -182,10 +182,10 @@ require '../config.inc.php';
                                                     while($row = $result -> fetch_array()){
                                                         echo '<tr>';
                                                         echo '<td>';
-                                                        echo '<a href="./php/editusers.php?uID='.$row['uID'].'" title="Edit Record" class="btn btn-primary mr-2">';
+                                                        echo '<a href="./php/editusers.php?uID='.$row['uID'].'" title="Edit Record" class="btn btn-primary m-2">';
                                                         echo '<i class="fa fa-pencil-alt"></i>';
                                                         echo '</a>';
-                                                        echo '<a href="./php/deleteusers.php?uID='.$row['uID'].'" title="Delete Record" class="btn btn-danger">';
+                                                        echo '<a href="./php/deleteusers.php?uID='.$row['uID'].'" title="Delete Record" class="btn btn-danger m-2">';
                                                         echo '<i class="fa fa-trash"></i>';
                                                         echo '</a>';
                                                         echo '</td>';
@@ -212,7 +212,7 @@ require '../config.inc.php';
                 <footer class="sticky-footer bg-white">
                     <div class="container my-auto">
                         <div class="copyright text-center my-auto">
-                            <span>Copyright &copy; Your Website 2021</span>
+                            <span>&copy; 2020 - <?php echo date("Y")?> AG Store. All Rights Reserved.</span>
                         </div>
                     </div>
                 </footer>
