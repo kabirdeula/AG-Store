@@ -196,13 +196,14 @@ require 'config.inc.php';
                     </div>
                 </div>
                 <div class="row productList">
+                <?php 
+                    $sql = "SELECT * FROM products;";
+                    if($result = $conn -> query($sql)){
+                        if($result -> num_rows > 0){
+                            while($row = $result -> fetch_array()){?>
                     <div class="col-md-4 text-center">
                         <div class="product">
-                            <?php 
-                                $sql = "SELECT * FROM products;";
-                                if($result = $conn -> query($sql)){
-                                    if($result -> num_rows > 0){
-                                        while($row = $result -> fetch_array()){?>
+                            
                             <div class="product-grid" style="background-image:url(images/<?php echo $row['productPhoto']?>);">
                                 <div class="inner">
                                     <p>
@@ -215,13 +216,13 @@ require 'config.inc.php';
                                 <h3><?php echo '<a href="./single.php?productID='. $row['productID'].'">'.$row['productName'].'</a>';?></h3>
                                 <span class="price">Rs. <?php echo $row['productPrice'];?></span>
                             </div>
-                            <?php 
-                                        }
-                                    }
-                                }
-                            ?>
                         </div>
                     </div>
+                <?php 
+                            }
+                        }
+                    }
+                ?>
                 </div>
             </div>
         </div>

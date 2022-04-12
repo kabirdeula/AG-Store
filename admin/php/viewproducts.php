@@ -3,7 +3,7 @@ include('config.inc.php');
 
 if(isset($_GET["productID"]) && !empty(trim($_GET["productID"]))){
     $ID = trim($_GET["productID"]);
-    $sql = "SELECT * FROM products WHERE productID = '$ID'";
+    $sql = "SELECT * FROM products P, categories C WHERE P.categoryID = C.categoryID AND productID = '$ID'";
     if($result = $conn -> query($sql)){
         if($result -> num_rows == 1){
             $row = $result -> fetch_array(MYSQLI_ASSOC);
@@ -11,6 +11,7 @@ if(isset($_GET["productID"]) && !empty(trim($_GET["productID"]))){
             $productDesc = $row["productDesc"];
             $productPrice = $row["productPrice"];
             $productPhoto = $row["productPhoto"];
+            $categoryName = $row["categoryName"];
         }else{
                 header("location: error.php");
                 exit();
@@ -60,9 +61,13 @@ if(isset($_GET["productID"]) && !empty(trim($_GET["productID"]))){
                                             <h4 class="font-weight-bold text-secondary">Price</h4>
                                             <p>Rs. <?php echo $productPrice?></p>
                                         </div>
-                                        <div class="col-sm-5">
+                                        <div class="col-sm-8">
                                             <h4 class="font-weight-bold text-secondary">Description</h4>
                                             <p><?php echo $productDesc?></p>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <h4 class="font-weight-bold text-secondary">Category</h4>
+                                            <p><?php echo $categoryName;?></p>
                                         </div>
                                     </div>
                                     <div class="row">

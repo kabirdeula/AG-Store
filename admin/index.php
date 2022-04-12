@@ -6,12 +6,15 @@ include './php/config.inc.php';
 $sql = "SELECT COUNT(uID) FROM users";
 $sql2 = "SELECT COUNT(productID) FROM products";
 $sql3 = "SELECT COUNT(mID) FROM messageBox";
+$sql4 = "SELECT COUNT(categoryID) FROM categories";
 $count = $conn->query($sql);
 $count2 = $conn->query($sql2);
 $count3 = $conn->query($sql3);
+$count4 = $conn->query($sql4);
 $userCount = $count -> fetch_array();
 $productCount = $count2 -> fetch_array();
 $messageCount = $count3 -> fetch_array();
+$categoryCount = $count4 -> fetch_array();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -83,6 +86,12 @@ $messageCount = $count3 -> fetch_array();
                 <a class="nav-link" href="messages.php">
                     <i class="fas fa-fw fa-envelope"></i>
                     <span>Messages</span></a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="categories.php">
+                    <i class="fas fa-fw fa-sitemap"></i>
+                    <span>Categories</span></a>
             </li>
 
         </ul>
@@ -224,16 +233,33 @@ $messageCount = $count3 -> fetch_array();
                         </div>
 
                         <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-warning shadow h-100 py-2">
+                            <div class="card border-left-info shadow h-100 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
                                                 Messages</div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $messageCount['COUNT(mID)'];?></div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-envelope fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-warning shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                                Categories</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $categoryCount['COUNT(categoryID)'];?></div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-sitemap fa-2x text-gray-300"></i>
                                         </div>
                                     </div>
                                 </div>

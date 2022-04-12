@@ -75,6 +75,12 @@ require '../config.inc.php';
                     <span>Messages</span></a>
             </li>
 
+            <li class="nav-item">
+                <a class="nav-link" href="categories.php">
+                    <i class="fas fa-fw fa-sitemap"></i>
+                    <span>Categories</span></a>
+            </li>
+
         </ul>
         <!-- End of Sidebar -->
 
@@ -171,18 +177,19 @@ require '../config.inc.php';
                                             <th>Product Description</th>
                                             <th>Price</th>
                                             <th>Photo Location</th>
+                                            <th>Category</th>
                                             <th>Display</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php
-                                            $sql = "SELECT * FROM products;";
+                                            $sql = "SELECT * FROM products P, categories C WHERE P.categoryID = C.categoryID ORDER BY productID;";
                                             
                                             if($result = $conn -> query($sql)){
                                                 if($result -> num_rows > 0){
                                                     while($row = $result -> fetch_array()){
                                                         echo '<tr>';
-                                                        echo '<td>';
+                                                        echo '<td class="col-md-2 col-sm-2">';
                                                         echo '<a href="./php/editproducts.php?productID='.$row['productID'].'" title="Edit Record" class="btn btn-primary m-2">';
                                                         echo '<i class="fa fa-pencil-alt"></i>';
                                                         echo '</a>';
@@ -190,10 +197,11 @@ require '../config.inc.php';
                                                         echo '<i class="fa fa-trash"></i>';
                                                         echo '</a>';
                                                         echo '</td>';
-                                                        echo '<td>'. $row['productName']. '</td>';
+                                                        echo '<td class="col-md-2">'. $row['productName']. '</td>';
                                                         echo '<td>'. $row['productDesc']. '</td>';
                                                         echo '<td>'. 'Rs. ' .$row['productPrice']. '</td>';
                                                         echo '<td>'. $row['productPhoto']. '</td>';
+                                                        echo '<td>'. $row['categoryName']. '</td>';
                                                         echo '<td>';
                                                         echo '<a href="./php/viewproducts.php?productID='.$row['productID'].'" title="View Record" class="btn btn-primary">';
                                                         echo '<i class="fa fa-eye"></i>';

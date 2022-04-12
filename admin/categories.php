@@ -15,7 +15,7 @@ require '../config.inc.php';
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Users</title>
+    <title>Categories</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -56,7 +56,7 @@ require '../config.inc.php';
             <hr class="sidebar-divider">
 
             <!-- Nav Item - Charts -->
-            <li class="nav-item active">
+            <li class="nav-item">
                 <a class="nav-link" href="users.php">
                     <i class="fas fa-fw fa-users"></i>
                     <span>Users</span></a>
@@ -75,7 +75,7 @@ require '../config.inc.php';
                     <span>Messages</span></a>
             </li>
 
-            <li class="nav-item">
+            <li class="nav-item active">
                 <a class="nav-link" href="categories.php">
                     <i class="fas fa-fw fa-sitemap"></i>
                     <span>Categories</span></a>
@@ -164,8 +164,8 @@ require '../config.inc.php';
                 <div class="container-fluid">
                     <div class="card shadow mb4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Users</h6>
-                            <h6 class="float-right"><a href="./php/createusers.php" title="New Users" class="btn btn-primary"><i class="fa fa-plus fa-sm"> Add New Users</i></a></h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Categories</h6>
+                            <h6 class="float-right"><a href="./php/createusers.php" title="New Users" class="btn btn-primary"><i class="fa fa-plus fa-sm"> Add New Category</i></a></h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -174,32 +174,30 @@ require '../config.inc.php';
                                         <tr>
                                             <th>Action</th>
                                             <th>Name</th>
-                                            <th>Username</th>
-                                            <th>Email</th>
+                                            <th>Type</th>
                                             <th>Display</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php
-                                            $sql = "SELECT * FROM users;";
+                                            $sql = "SELECT * FROM categories;";
                                             
                                             if($result = $conn -> query($sql)){
                                                 if($result -> num_rows > 0){
                                                     while($row = $result -> fetch_array()){
                                                         echo '<tr>';
                                                         echo '<td>';
-                                                        echo '<a href="./php/editusers.php?uID='.$row['uID'].'" title="Edit Record" class="btn btn-primary m-2">';
+                                                        echo '<a href="./php/editcategories.php?categoryID='.$row['categoryID'].'" title="Edit Record" class="btn btn-primary m-2">';
                                                         echo '<i class="fa fa-pencil-alt"></i>';
                                                         echo '</a>';
-                                                        echo '<a href="./php/deleteusers.php?uID='.$row['uID'].'" title="Delete Record" class="btn btn-danger m-2">';
+                                                        echo '<a href="./php/deletecategories.php?categoryID='.$row['categoryID'].'" title="Delete Record" class="btn btn-danger m-2">';
                                                         echo '<i class="fa fa-trash"></i>';
                                                         echo '</a>';
                                                         echo '</td>';
-                                                        echo '<td>'. $row['firstName']. ' '. $row['lastName']. '</td>';
-                                                        echo '<td>'. $row['userName']. '</td>';
-                                                        echo '<td>'. $row['email'].'</td>';
+                                                        echo '<td>'. $row['categoryName']. '</td>';
+                                                        echo '<td>'. $row['categoryType']. '</td>';
                                                         echo '<td>';
-                                                        echo '<a href="./php/viewusers.php?uID='.$row['uID'].'" title="View Record" class="btn btn-primary">';
+                                                        echo '<a href="./php/viewcategories.php?categoryID='.$row['categoryID'].'" title="View Record" class="btn btn-primary">';
                                                         echo '<i class="fa fa-eye"></i>';
                                                         echo '</a>';
                                                         echo '</td>';

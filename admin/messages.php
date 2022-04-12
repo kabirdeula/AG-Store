@@ -75,6 +75,12 @@ require '../config.inc.php';
                     <span>Messages</span></a>
             </li>
 
+            <li class="nav-item">
+                <a class="nav-link" href="categories.php">
+                    <i class="fas fa-fw fa-sitemap"></i>
+                    <span>Categories</span></a>
+            </li>
+
         </ul>
         <!-- End of Sidebar -->
 
