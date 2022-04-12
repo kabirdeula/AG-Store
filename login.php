@@ -3,8 +3,8 @@ include('config.inc.php');
 session_start();
 
 $message = "";
-$usernameError = "Username";
-$passwordError = "Password";
+$usernameError = "";
+$passwordError = "";
 
 if(isset($_POST['submit'])){
     $username = $_POST['userName'];
@@ -58,7 +58,6 @@ if(isset($_POST['submit'])){
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="./images/favicon.png" type="image/x-icon">
-    
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
@@ -70,10 +69,13 @@ if(isset($_POST['submit'])){
                 </div>
                 <div class="formBox">
                     <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" name="contact" method="POST">
-                    <?php if($message) echo "<h4 style='color: red; text-align: center;padding:25px;margin:5px;background:#d3d3d3;border-radius:20px;'>".$message?>
+                    <?php if($message){?>
+                        <div class='alert alert-danger'><?php echo $message;?></div><?php }?>
                         <h2 id="h2-signin-up">Sign In</h2>
-                        <input id="form-ask" type="text" placeholder="<?php echo $usernameError?>" name="userName">
-                        <input id="form-password" type="password" placeholder="<?php echo $passwordError ?>" name="userPassword">
+                        <input id="form-ask" type="text" placeholder="Username" name="userName">
+                        <span class="error"><?php echo $usernameError;?></span>
+                        <input id="form-password" type="password" placeholder="Password" name="userPassword">
+                        <span class="error"><?php echo $passwordError;?></span><br>
                         <input type="submit" value="Sign In" name="submit">
                         <p class="signUp">
                             Don't have an account?
