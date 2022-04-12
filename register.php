@@ -1,10 +1,6 @@
 <?php
 include('config.inc.php');
-$userNameError = "Username";
-$firstNameError = "First Name";
-$lastNameError = "Last Name";
-$emailError = "Email Address";
-$passwordError = "Password";
+$userNameError = $firstNameError = $lastNameError = $emailError = $passwordError = "";
 if(isset($_POST['register'])){
     $userName = $_POST['userName'];
     $firstName = $_POST['firstName'];
@@ -104,11 +100,16 @@ if(isset($_POST['register'])){
                 <div class="formBox">
                     <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" name="contact" method="POST">
                         <h2 id="h2-signin-up">Create An Account!</h2>
-                        <input type="text" name="userName" placeholder="<?php echo $userNameError ?>">
-                        <input type="text" name="firstName" placeholder="<?php echo $firstNameError ?>">
-                        <input type="text" name="lastName" placeholder="<?php echo $lastNameError ?>">
-                        <input type="email" name="email" placeholder="<?php echo $emailError ?>">
-                        <input type="password" name="userPassword" placeholder="<?php echo $passwordError ?>">
+                        <input type="text" name="userName" placeholder="Username">
+                        <span class="error"><?php echo $userNameError;?></span>
+                        <input type="text" name="firstName" placeholder="First Name">
+                        <span class="error"><?php echo $firstNameError;?></span>
+                        <input type="text" name="lastName" placeholder="Last Name">
+                        <span class="error"><?php echo $lastNameError;?></span>
+                        <input type="email" name="email" placeholder="Email Address">
+                        <span class="error"><?php echo $emailError;?></span>
+                        <input type="password" name="userPassword" placeholder="Password">
+                        <span class="error"><?php echo $passwordError;?></span>
                         <input type="submit" class="btn-signUp" value="Sign Up" name="register">
                         <p class="signUp">
                             Already have an account?
