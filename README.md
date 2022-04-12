@@ -26,10 +26,10 @@ AG-Store is an online store that sells high-quality handmade things at an afford
 ## Contributors
 
 <a href="https://github.com/kabirdeula">
-  <img src="https://github.com/kabirdeula.png?size=50">
+  <img src="https://github.com/kabirdeula.png?size=250">
 </a>
 <a href="https://github.com/bijinamaharjan">
-  <img src="https://github.com/bijinamaharjan.png?size=50">
+  <img src="https://github.com/bijinamaharjan.png?size=250">
 </a>
 
 ---
@@ -68,10 +68,62 @@ AG-Store is an online store that sells high-quality handmade things at an afford
 
 ![Admin Users](./images/screenshot/adminUsers.png)
 
+#### Create Users
+
+![Create Users](./images/screenshot/createUser.png)
+
+#### Read Users
+
+![Read Users](./images/screenshot/readUser.png)
+
+#### Update Users
+
+![Update Users](./images/screenshot/updateUser.png)
+
+---
+
 ### Admin Products
 
 ![Admin Products](./images/screenshot/adminProducts.png)
 
+#### Create Product
+
+![Create Product](./images/screenshot/createProduct.png)
+
+#### Read Product
+
+![Read Product](./images/screenshot/readProduct.png)
+
+#### Update Product
+
+![Update Product](./images/screenshot/updateProduct.png)
+
+---
+
 ### Admin Messages
 
 ![Admin Messages](./images/screenshot/adminMessages.png)
+
+#### Read Message
+
+![Read Message](./images/screenshot/readMessage.png)
+
+---
+
+### Admin Categories
+
+![Admin Categories](./images/screenshot/adminCategories.png)
+
+#### Create Category
+
+![Create Category](./images/screenshot/createCategory.png)
+
+#### Read Category
+
+![Read Category](./images/screenshot/readCategory.png)
+
+#### Update Category
+
+![Update Category](./images/screenshot/updateCategory.png)
+
+---
