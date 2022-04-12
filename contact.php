@@ -166,27 +166,32 @@ if(isset($_POST['submit'])){
                             <div class="row form-group">
                                 <div class="col-md-6">
                                     <input type="text" id="fname" class="form-control" name="fName" placeholder="<?php echo $fNameError;?>">
+                                    <span class="alert alert-danger"></span>
                                 </div>
                                 <div class="col-md-6">
                                     <input type="text" id="lname" class="form-control" name="lName" placeholder="<?php echo $lNameError;?>">
+                                    <span class="alert alert-danger"></span>
                                 </div>
                             </div>
 
                             <div class="row form-group">
                                 <div class="col-md-12">
                                     <input type="text" id="email" class="form-control" name="email" placeholder="<?php echo $emailError;?>">
+                                    <span class="alert alert-danger"></span>
                                 </div>
                             </div>
 
                             <div class="row form-group">
                                 <div class="col-md-12">
                                     <input type="text" id="subject" class="form-control" name="subText" placeholder="<?php echo $subjectError;?>">
+                                    <span class="alert alert-danger"></span>
                                 </div>
                             </div>
 
                             <div class="row form-group">
                                 <div class="col-md-12">
                                     <textarea name="messageField" id="message" cols="30" rows="10" class="form-control" placeholder="<?php echo $messageError;?>"></textarea>
+                                    <span class="alert alert-danger"></span>
                                 </div>
                             </div>
                             <div class="form-group">
