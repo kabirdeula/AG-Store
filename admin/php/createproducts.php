@@ -88,20 +88,7 @@ if(isset($_POST['register'])){
                                         <input type="number" name="productPrice" placeholder="Product Price" class="form-control">
                                     </div>
                                     <div class="col-sm-6">
-                                    <select name="categories" id="categories" class="form-control">
-                                        <option value="none" selected disabled hidden>Categories</option>
-                                        <?php 
-                                        $category = "SELECT * FROM categories;";
-                                        if($result = $conn -> query($category)){
-                                            if($result -> num_rows > 0){
-                                                while($row = $result -> fetch_array()){
-                                        ?>
-                                            <option value="<?php echo $row['categoryName']?>"><?php echo $row['categoryName']?></option>
-                                        <?php
-                                                }
-                                            }
-                                        }
-                                        ?></select>
+                                        <input type="number" name="categoryID" id="categoryID" placeholder="Category ID" class="form-control">
                                     </div>
                                 </div>
                                 
