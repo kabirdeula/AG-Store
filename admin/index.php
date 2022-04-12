@@ -190,6 +190,11 @@ $categoryCount = $count4 -> fetch_array();
                             <a class="dropdown-item" href="./php/createproducts.php">
                                 <i class="fas fa-shopping-cart fa-sm fa-fw mr-2 text-gray-400"></i> Products
                             </a>
+
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="./php/createcategory.php">
+                                <i class="fas fa-sitemap fa-sm fa-fw mr-2 text-gray-400"></i> Categories
+                            </a>
                         </div>
                     </div>
 
