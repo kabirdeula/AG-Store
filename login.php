@@ -58,33 +58,46 @@ if(isset($_POST['submit'])){
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="./images/favicon.png" type="image/x-icon">
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./admin/css/sb-admin-2.css">
 </head>
-<body>
-    <section>
-        <div class="main-container">
-            <div class="user signIn-box">
-                <div class="imgBox">
-                    <img src="./images/favicon.png" alt="" id="imgBox" />
-                </div>
-                <div class="formBox">
-                    <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" name="contact" method="POST">
-                    <?php if($message){?>
-                        <div class='alert alert-danger'><?php echo $message;?></div><?php }?>
-                        <h2 id="h2-signin-up">Sign In</h2>
-                        <input id="form-ask" type="text" placeholder="Username" name="userName">
-                        <span class="error"><?php echo $usernameError;?></span>
-                        <input id="form-password" type="password" placeholder="Password" name="userPassword">
-                        <span class="error"><?php echo $passwordError;?></span><br>
-                        <input type="submit" value="Sign In" name="submit">
-                        <p class="signUp">
-                            Don't have an account?
-                            <a href="register.php">Sign Up</a>
-                        </p>
-                        <p class="signUp"><a href="index.php">Return to Home</a></p>
-                    </form>
+<body class="bg-info">
+    <div class="container">
+        <div class="card o-hidden border-0 shadow-lg my-5">
+            <div class="card-body p-0">
+                <div class="row">
+                    <div class="col-lg-5 d-none d-lg-block">
+                        <img src="./images/favicon.png" alt="AG-Store" class="img-fluid px-3 px-sm-4 mt-3 mb-4">
+                    </div>
+                    <div class="col-lg-7">
+                        <div class="p-5">
+                            <div class="text-center">
+                                <h1 class="h3 font-weight-bold mb-4">SIGN IN</h1>
+                            </div>
+                            <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" name="contact" method="POST">
+                            <?php if($message){?>
+                                <div class='alert alert-danger'><?php echo $message;?></div><?php }?>
+                                <div class="form-group">
+                                    <input type="text" placeholder="Username" name="userName" class="form-control">
+                                    <span class="text-danger"><?php echo $usernameError;?></span>
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" placeholder="Password" name="userPassword" class="form-control">
+                                    <span class="text-danger"><?php echo $passwordError;?></span>
+                                </div>
+                                <input type="submit" value="Sign In" name="submit" class="btn btn-block btn-success">
+                                <div class="py-3 initialism font-weight-bolder">
+                                    <p class="text-bold text-dark">
+                                        Don't have an account?
+                                        <a href="register.php" class="text-danger">Sign Up</a>
+                                    </p>
+                                    <p><a href="index.php" class="text-danger">Return to Home</a></p>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
-    
+        </div>
+    </div>
 </body>
 </html>

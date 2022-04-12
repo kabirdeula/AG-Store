@@ -63,12 +63,6 @@ if(isset($_POST['register'])){
         }
         mysqli_close($conn);
     }
-
-    
-
-    
-    
-    
 }
 
 ?>
@@ -79,7 +73,6 @@ if(isset($_POST['register'])){
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css">
     <title>Sign Up</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="AG Store is an ecommerce website or an online based business that sells handmade items and diy items." />
@@ -88,40 +81,55 @@ if(isset($_POST['register'])){
     <!-- Favicon -->
     <link rel="shortcut icon" href="./images/favicon.png" type="image/x-icon">
 
+    <link rel="stylesheet" href="./admin/css/sb-admin-2.css">
+
 </head>
 
-<body>
-    <section>
-        <div class="main-container">
-            <div class="user signIn-box">
-                <div class="imgBox">
-                    <img src="./images/register.webp" alt="Man using Desktop Computer" id="imgBox" />
-                </div>
-                <div class="formBox">
-                    <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" name="contact" method="POST">
-                        <h2 id="h2-signin-up">Create An Account!</h2>
-                        <input type="text" name="userName" placeholder="Username">
-                        <span class="error"><?php echo $userNameError;?></span>
-                        <input type="text" name="firstName" placeholder="First Name">
-                        <span class="error"><?php echo $firstNameError;?></span>
-                        <input type="text" name="lastName" placeholder="Last Name">
-                        <span class="error"><?php echo $lastNameError;?></span>
-                        <input type="email" name="email" placeholder="Email Address">
-                        <span class="error"><?php echo $emailError;?></span>
-                        <input type="password" name="userPassword" placeholder="Password">
-                        <span class="error"><?php echo $passwordError;?></span>
-                        <input type="submit" class="btn-signUp" value="Sign Up" name="register">
-                        <p class="signUp">
-                            Already have an account?
-                            <a href="login.php">Sign In</a>
-                        </p>
-                    </form>
+<body class="bg-warning">
+    <div class="container">
+        <div class="card o-hidden border-0 shadow-lg my-5">
+            <div class="card-body p-0">
+                <div class="row">
+                    <div class="col-lg-7">
+                        <div class="p-5">
+                            <div class="text-center">
+                                <h1 class="h3 font-weight-bold mb-4">SIGN UP</h1>
+                            </div>
+                            <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" name="contact" method="POST">
+                                <div class="form-group">
+                                    <input type="text" name="userName" placeholder="Username" class="form-control">
+                                    <span class="text-danger"><?php echo $userNameError;?></span>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <input type="text" name="firstName" placeholder="First Name" class="form-control">
+                                        <span class="text-danger"><?php echo $firstNameError;?></span>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input type="text" name="lastName" placeholder="Last Name" class="form-control"> 
+                                        <span class="text-danger"><?php echo $lastNameError;?></span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" name="email" placeholder="Email Address" class="form-control">
+                                    <span class="text-danger"><?php echo $emailError;?></span>
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" name="userPassword" placeholder="Password" class="form-control">
+                                    <span class="text-danger"><?php echo $passwordError;?></span>
+                                </div>
+                                <input type="submit" class="btn btn-block btn-success" value="Sign Up" name="register">
+                                <p class="py-3 initialism font-weight-bolder">
+                                    Already have an account?
+                                    <a href="login.php">Sign In</a>
+                                </p>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-lg-5 d-none d-lg-block"><img src="./images/register.webp" alt="Person looking at the computer" class="img-fluid px-3 px-sm-4 mt-3 mb-4"></div>
                 </div>
             </div>
-
-            
         </div>
-    </section>
+    </div>
 </body>
-
 </html>
