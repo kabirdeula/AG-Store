@@ -165,7 +165,7 @@ require '../config.inc.php';
                     <div class="card shadow mb4">
                         <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold text-primary">Categories</h6>
-                            <h6 class="float-right"><a href="./php/createusers.php" title="New Users" class="btn btn-primary"><i class="fa fa-plus fa-sm"> Add New Category</i></a></h6>
+                            <h6 class="float-right"><a href="./php/createcategory.php" title="New Category" class="btn btn-primary"><i class="fa fa-plus fa-sm"> Add New Category</i></a></h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -187,10 +187,10 @@ require '../config.inc.php';
                                                     while($row = $result -> fetch_array()){
                                                         echo '<tr>';
                                                         echo '<td>';
-                                                        echo '<a href="./php/editcategories.php?categoryID='.$row['categoryID'].'" title="Edit Record" class="btn btn-primary m-2">';
+                                                        echo '<a href="./php/editcategory.php?categoryID='.$row['categoryID'].'" title="Edit Record" class="btn btn-primary m-2">';
                                                         echo '<i class="fa fa-pencil-alt"></i>';
                                                         echo '</a>';
-                                                        echo '<a href="./php/deletecategories.php?categoryID='.$row['categoryID'].'" title="Delete Record" class="btn btn-danger m-2">';
+                                                        echo '<a href="./php/deletecategory.php?categoryID='.$row['categoryID'].'" title="Delete Record" class="btn btn-danger m-2">';
                                                         echo '<i class="fa fa-trash"></i>';
                                                         echo '</a>';
                                                         echo '</td>';
