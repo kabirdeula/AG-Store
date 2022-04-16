@@ -86,7 +86,7 @@ if(isset($_POST["productID"]) && !empty($_POST["productID"])){
                         </div>
                     </div>
                     <!-- <div class="col-lg-5 d-none d-lg-block"> -->
-                        <img src="../../images/<?php echo $productPhoto?>" alt="<?php echo $productName?>" class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width:20rem;">
+                        <img src="../../images/products/<?php echo $productPhoto?>" alt="<?php echo $productName?>" class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width:20rem;">
                     <!-- </div> -->
                 </div>
             </div>

@@ -116,7 +116,7 @@ require 'config.inc.php';
                             while($row = $result -> fetch_array()){?>
                     <div class="col-md-4 text-center">
                         <div class="product">
-                            <div class="product-grid" style="background-image:url(images/<?php echo $row['productPhoto']?>);">
+                            <div class="product-grid" style="background-image:url(./images/products/<?php echo $row['productPhoto']?>);">
                                 <div class="inner">
                                     <p>
                                         <a href="single.html" class="icon"><i class="icon-shopping-cart"></i></a>

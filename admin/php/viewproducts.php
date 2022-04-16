@@ -50,7 +50,7 @@ if(isset($_GET["productID"]) && !empty(trim($_GET["productID"]))){
                                 </div>
                                 <div class="card-body">
                                     <div class="text-center">
-                                        <img src="../../images/<?php echo $productPhoto;?>" class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width:25rem;">
+                                        <img src="../../images/products/<?php echo $productPhoto;?>" class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width:25rem;">
                                     </div>
                                     <div class="row">
                                         <div class="col-sm-8">
