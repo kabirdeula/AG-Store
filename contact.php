@@ -2,11 +2,7 @@
 require 'config.inc.php';
 session_start();
 
-$fNameError = "Your First Name";
-$lNameError = "Your Last Name";
-$emailError = "Your Email Address";
-$subjectError = "Your Subject of this Message.";
-$messageError = "Say something about this.";
+$fNameError = $lNameError = $emailError = $subjectError = $messageError = "";
 
 if(isset($_POST['submit'])){
     $fName = $_POST['fName'];
@@ -165,33 +161,33 @@ if(isset($_POST['submit'])){
                         <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST">
                             <div class="row form-group">
                                 <div class="col-md-6">
-                                    <input type="text" id="fname" class="form-control" name="fName" placeholder="<?php echo $fNameError;?>">
-                                    <span class="alert alert-danger"></span>
+                                    <input type="text" id="fname" class="form-control" name="fName" placeholder="Your First Name">
+                                    <span class="text-danger"><?php echo $fNameError;?></span>
                                 </div>
                                 <div class="col-md-6">
-                                    <input type="text" id="lname" class="form-control" name="lName" placeholder="<?php echo $lNameError;?>">
-                                    <span class="alert alert-danger"></span>
+                                    <input type="text" id="lname" class="form-control" name="lName" placeholder="Your Last Name">
+                                    <span class="text-danger"><?php echo $lNameError;?></span>
                                 </div>
                             </div>
 
                             <div class="row form-group">
                                 <div class="col-md-12">
-                                    <input type="text" id="email" class="form-control" name="email" placeholder="<?php echo $emailError;?>">
-                                    <span class="alert alert-danger"></span>
+                                    <input type="text" id="email" class="form-control" name="email" placeholder="Your Email Address">
+                                    <span class="text-danger"><?php echo $emailError;?></span>
                                 </div>
                             </div>
 
                             <div class="row form-group">
                                 <div class="col-md-12">
-                                    <input type="text" id="subject" class="form-control" name="subText" placeholder="<?php echo $subjectError;?>">
-                                    <span class="alert alert-danger"></span>
+                                    <input type="text" id="subject" class="form-control" name="subText" placeholder="Your Subject of this Message">
+                                    <span class="text-danger"><?php echo $subjectError;?></span>
                                 </div>
                             </div>
 
                             <div class="row form-group">
                                 <div class="col-md-12">
-                                    <textarea name="messageField" id="message" cols="30" rows="10" class="form-control" placeholder="<?php echo $messageError;?>"></textarea>
-                                    <span class="alert alert-danger"></span>
+                                    <textarea name="messageField" id="message" cols="30" rows="10" class="form-control" placeholder="Say Something About This"></textarea>
+                                    <span class="text-danger"><?php echo $messageError;?></span>
                                 </div>
                             </div>
                             <div class="form-group">
