@@ -1,6 +1,6 @@
 <?php
 include('config.inc.php');
-$productNameError = $productDescError = $productPriceError = $productPhotoError = $cIDError = ' ';
+$productNameError = $productDescError = $productPriceError = $productPhotoError = $cIDError = $qtyError = ' ';
 $sql = "SELECT * FROM categories";
 $allCategory = mysqli_query($conn, $sql);
 
@@ -9,6 +9,7 @@ if(isset($_POST['register'])){
     $productDesc = $_POST['productDesc'];
     $productPrice = $_POST['productPrice'];
     $productPhoto = $_POST['productPhoto'];
+    $productQty = $_POST['productQty'];
     $cID = $_POST['categoryID'];
     $target_file = "/srv/http/AG-Store/images/products/";
     $productPhoto = $_FILES['productPhoto']['name'];
@@ -36,13 +37,18 @@ if(isset($_POST['register'])){
         $error = true;
     }
 
+    if(empty($productQty)){
+        $productQty = "Product Quantity can't be blank.";
+        $error = true;
+    }
+
     if(empty($cID)){
         $cIDError = "Category ID can't be blank.";
         $error = true;
     }
 
     if(!$error){
-        $sqlInsert = "INSERT INTO products(productName, productDesc, productPrice, productPhoto, categoryID)VALUES('$productName', '$productDesc', '$productPrice', '$productPhoto', '$cID')";
+        $sqlInsert = "INSERT INTO products(productName, productDesc, productPrice, productPhoto, categoryID, qty)VALUES('$productName', '$productDesc', '$productPrice', '$productPhoto', '$cID', '$productQty')";
         if (mysqli_query($conn, $sqlInsert)) {
             echo '<script type ="text/JavaScript">';  
             echo 'alert("Data Inserted Successfully")';  
@@ -107,17 +113,22 @@ if(isset($_POST['register'])){
                                     
                                 </div>
                                 
-                                <div class="form-group">
-                                    <select name="categoryID" id="categoryID" class="form-control">
-                                        <option disabled selected hidden>Category Name</option>
-                                        <?php
-                                            while($row = mysqli_fetch_array($allCategory, MYSQLI_ASSOC)){?>
-                                                <option value="<?php echo $row["categoryID"]?>"><?php echo $row["categoryName"]?></option>
+                                <div class="form-group row">
+                                    <div class="col-sm-8 mb-3 mb-sm-0">
+                                        <select name="categoryID" id="categoryID" class="form-control">
+                                            <option disabled selected hidden>Category Name</option>
                                             <?php
-                                            }
-                                        ?>
-                                    </select>
-                                    <span class="text-danger"><?php echo $cIDError?></span>
+                                                while($row = mysqli_fetch_array($allCategory, MYSQLI_ASSOC)){?>
+                                                    <option value="<?php echo $row["categoryID"]?>"><?php echo $row["categoryName"]?></option>
+                                                <?php
+                                                }
+                                            ?>
+                                        </select>
+                                        <span class="text-danger"><?php echo $cIDError?></span>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <input type="number" name="productQty" id="productQty" class="form-control" placeholder="Quantity">
+                                    </div>
                                 </div>
                                 <input type="submit" class="btn btn-success btn-block" value="Submit" name="register">
                             </form>
