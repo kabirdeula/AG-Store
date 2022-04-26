@@ -12,6 +12,7 @@ if(isset($_GET["productID"]) && !empty(trim($_GET["productID"]))){
             $productPrice = $row["productPrice"];
             $productPhoto = $row["productPhoto"];
             $categoryName = $row["categoryName"];
+            $productQty = $row["qty"];
         }else{
                 header("location: error.php");
                 exit();
@@ -61,9 +62,13 @@ if(isset($_GET["productID"]) && !empty(trim($_GET["productID"]))){
                                             <h4 class="font-weight-bold text-secondary">Price</h4>
                                             <p>Rs. <?php echo $productPrice?></p>
                                         </div>
-                                        <div class="col-sm-8">
+                                        <div class="col-sm-4">
                                             <h4 class="font-weight-bold text-secondary">Description</h4>
                                             <p><?php echo $productDesc?></p>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <h4 class="font-weight-bold text-secondary">Quantity</h4>
+                                            <p><?php echo $productQty?></p>
                                         </div>
                                         <div class="col-sm-4">
                                             <h4 class="font-weight-bold text-secondary">Category</h4>
