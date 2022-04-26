@@ -176,8 +176,8 @@ require '../config.inc.php';
                                             <th>Product Name</th>
                                             <th>Product Description</th>
                                             <th>Price</th>
-                                            <th>Photo Location</th>
                                             <th>Category</th>
+                                            <th>Quantity</th>
                                             <th>Display</th>
                                         </tr>
                                     </thead>
@@ -200,8 +200,8 @@ require '../config.inc.php';
                                                         echo '<td class="col-md-2">'. $row['productName']. '</td>';
                                                         echo '<td>'. $row['productDesc']. '</td>';
                                                         echo '<td>'. 'Rs. ' .$row['productPrice']. '</td>';
-                                                        echo '<td>'. $row['productPhoto']. '</td>';
                                                         echo '<td>'. $row['categoryName']. '</td>';
+                                                        echo '<td>'. $row['qty']. '</td>';
                                                         echo '<td>';
                                                         echo '<a href="./php/viewproducts.php?productID='.$row['productID'].'" title="View Record" class="btn btn-primary">';
                                                         echo '<i class="fa fa-eye"></i>';

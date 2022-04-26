@@ -7,9 +7,9 @@ if(isset($_POST["productID"]) && !empty($_POST["productID"])){
     $productDesc = $_POST['productDesc'];
     $productPrice = $_POST['productPrice'];
     $productPhoto = $_POST['productPhoto'];
+    $productQty = $_POST['productQty'];
     $categoryName = $_POST['categoryName'];
-
-    $update = "UPDATE products SET productName = '$productName', productDesc = '$productDesc', productPrice = '$productPrice', productPhoto = '$productPhoto'  WHERE productID = '$ID';";
+    $update = "UPDATE products SET productName = '$productName', productDesc = '$productDesc', productPrice = '$productPrice', qty = '$productQty' WHERE productID = '$ID';";
     if(mysqli_query($conn, $update)){
         header("location: ../products.php");
         exit();
@@ -29,6 +29,7 @@ if(isset($_POST["productID"]) && !empty($_POST["productID"])){
                 $productDesc = $row["productDesc"];
                 $productPrice = $row["productPrice"];
                 $productPhoto = $row["productPhoto"];
+                $productQty = $row["productQty"];
             }else{
                 header("location: error.php");
                 exit();
@@ -67,7 +68,7 @@ if(isset($_POST["productID"]) && !empty($_POST["productID"])){
                             <div class="text-center">
                                 <h1 class="h4 text-gray-900 mb-4">Update Product</h1>
                             </div>
-                            <form action="<?php echo htmlspecialchars(basename($_SERVER['REQUEST_URI'])); ?>" method="POST" class="form-floating">
+                            <form action="<?php echo htmlspecialchars(basename($_SERVER['REQUEST_URI'])); ?>" method="POST">
                                 <div class="form-group">
                                     <input type="text" id="productName" name="productName" value="<?php echo $productName;?>" class="form-control form-control-user" placeholder="Name">
                                 </div>
@@ -75,7 +76,7 @@ if(isset($_POST["productID"]) && !empty($_POST["productID"])){
                                     <textarea name="productDesc" id="productDesc" class="form-control" placeholder="Description"><?php echo $productDesc;?></textarea>
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" name="productPhoto" value="<?php echo $productPhoto;?>" class="form-control form-control-user" placeholder="Photo">
+                                    <input type="text" name="productQty" value="<?php echo $productQty;?>" class="form-control" placeholder="Quantity">
                                 </div>
                                 <div class="form-group">
                                     <input type="number" name="productPrice" value="<?php echo $productPrice; ?>" class="form-control form-control-user">
@@ -85,9 +86,7 @@ if(isset($_POST["productID"]) && !empty($_POST["productID"])){
                             </form>
                         </div>
                     </div>
-                    <!-- <div class="col-lg-5 d-none d-lg-block"> -->
-                        <img src="../../images/products/<?php echo $productPhoto?>" alt="<?php echo $productName?>" class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width:20rem;">
-                    <!-- </div> -->
+                    <img src="../../images/products/<?php echo $productPhoto?>" alt="<?php echo $productName?>" class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width:20rem;">
                 </div>
             </div>
         </div>
