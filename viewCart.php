@@ -1,49 +1,5 @@
 <?php
-require 'config.inc.php';
 session_start();
-
-$fNameError = $lNameError = $emailError = $subjectError = $messageError = "";
-
-if(isset($_POST['submit'])){
-    $fName = $_POST['fName'];
-    $lName = $_POST['lName'];
-    $email = $_POST['email'];
-    $subject = $_POST['subText'];
-    $message = $_POST['messageField'];
-
-    if(empty($fName)){
-        $fNameError = "First Name can't be blank";
-        $error = true;
-    }
-    if(empty($lName)){
-        $lNameError = "Last Name can't be blank";
-        $error = true;
-    }
-    if(empty($email)){
-        $emailError = "Email can't be blank";
-        $error = true;
-    }
-    if(empty($subject)){
-        $subjectError = "Subject can't be blank";
-        $error = true;
-    }
-    if(empty($message)){
-        $messageError = "Message can't be blank";
-        $error = true;
-    }
-
-    if(!$error){
-        $sql = "INSERT INTO messageBox(fName, lName, email, subText, messageField) VALUES ('$fName', '$lName', '$email', '$subject', '$message');";
-        if(mysqli_query($conn, $sql)){
-            header("location: contact.php");
-        }else{
-            echo "Error";
-        }
-        mysqli_close($conn);
-    }
-
-}
-
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -51,15 +7,17 @@ if(isset($_POST['submit'])){
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Contact Us</title>
+    <title>Cart</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="AG Store is an ecommerce website or an online based business that sells handmade items and diy items." />
     <meta name="keywords" content="agstore, handmade, diy, ecommerce, kabirdeula, bijinamaharjan, aayushamaharjan" />
 
     <!-- Animate.css -->
     <link rel="stylesheet" href="./css/animate.css">
+
     <!-- Icomoon Icon Fonts-->
     <link rel="stylesheet" href="./css/icomoon.css">
+
     <!-- Bootstrap  -->
     <link rel="stylesheet" href="./css/bootstrap.css">
 
@@ -77,7 +35,7 @@ if(isset($_POST['submit'])){
     <script src="./js/modernizr-2.6.2.min.js"></script>
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="./images/favicon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="./images/favicon.png">
 
 </head>
 
@@ -100,7 +58,7 @@ if(isset($_POST['submit'])){
                             <li><a href="product.php">Shop</a></li>
                             <?php 
                             if($_SESSION['loggedIn']){
-                                echo '<li class="has-dropdown">'. $_SESSION['userName']. '</li>';
+                                echo '<li>'. $_SESSION['userName']. '</li>';
                                 echo '<li><a href="logout.php">Log Out</a></li>';
                             } else{
                                 echo '<li><a href="login.php">Login</a></li>';
@@ -113,91 +71,73 @@ if(isset($_POST['submit'])){
                                 <div class="input-group">
                                     <input type="text" placeholder="Search..">
                                     <span class="input-group-btn">
-										<button class="btn btn-primary" type="button"><i class="icon-search"></i></button>
+										<button class="btn btn-primary" type="button"><i
+												class="icon-search"></i></button>
 									</span>
                                 </div>
                             </li>
-                            <li class="shopping-cart"><a href="./addToCart.php" class="cart"><span><small>0</small><i class="icon-shopping-cart"></i></span></a></li>
+                            <li class="shopping-cart"><a href="./viewCart.php" class="cart"><span><small>0</small><i
+											class="icon-shopping-cart"></i></span></a></li>
                         </ul>
                     </div>
                 </div>
+
             </div>
         </nav>
 
-        <header id="fh5co-header" class="fh5co-cover fh5co-cover-sm" role="banner" style="background-image:url(images/img_bg_7.jpg);">
+        <header id="fh5co-header" class="fh5co-cover fh5co-cover-sm" role="banner" style="background-image:url(images/img_bg_6.jpg);">
             <div class="overlay"></div>
             <div class="container">
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2 text-center">
                         <div class="display-t">
                             <div class="display-tc animate-box" data-animate-effect="fadeIn">
-                                <h1>Contact Us</h1>
+                                <h1>Cart</h1>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </header>
-
-        <div id="fh5co-contact">
+        
+        <div id="fh5co-about">
             <div class="container">
-                <div class="row">
-                    <div class="col-md-5 col-md-push-1 animate-box">
-
-                        <div class="fh5co-contact-info">
-                            <h3>Contact Information</h3>
-                            <ul>
-                                <li class="address">Paknajol, Kathmandu </li>
-                                <li class="phone"><a href="tel://1234567920">+977 988-514-8059</a></li>
-                                <li class="email"><a href="mailto:info@kabirdeula.info.np">info@kabirdeula.info.np</a></li>
-                                <li class="url"><a href="http://kabirdeula.info.np">kabirdeula.info.np</a></li>
-                            </ul>
-                        </div>
-
-                    </div>
-
-                    <div class="col-md-6 animate-box">
-                        <h3>Get In Touch</h3>
-                        <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST">
-                            <div class="row form-group">
-                                <div class="col-md-6">
-                                    <input type="text" id="fname" class="form-control" name="fName" placeholder="Your First Name">
-                                    <span class="text-danger"><?php echo $fNameError;?></span>
-                                </div>
-                                <div class="col-md-6">
-                                    <input type="text" id="lname" class="form-control" name="lName" placeholder="Your Last Name">
-                                    <span class="text-danger"><?php echo $lNameError;?></span>
-                                </div>
-                            </div>
-
-                            <div class="row form-group">
-                                <div class="col-md-12">
-                                    <input type="text" id="email" class="form-control" name="email" placeholder="Your Email Address">
-                                    <span class="text-danger"><?php echo $emailError;?></span>
-                                </div>
-                            </div>
-
-                            <div class="row form-group">
-                                <div class="col-md-12">
-                                    <input type="text" id="subject" class="form-control" name="subText" placeholder="Your Subject of this Message">
-                                    <span class="text-danger"><?php echo $subjectError;?></span>
-                                </div>
-                            </div>
-
-                            <div class="row form-group">
-                                <div class="col-md-12">
-                                    <textarea name="messageField" id="message" cols="30" rows="10" class="form-control" placeholder="Say Something About This"></textarea>
-                                    <span class="text-danger"><?php echo $messageError;?></span>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <input type="submit" value="Send Message" name="submit" class="btn btn-primary">
-                            </div>
-
-                        </form>
+                <div class="about-content">
+                    <div class="row animate-box">
+                        <table class="table table-responsive">
+                            <thead>
+                                <tr>
+                                    <th>S. No.</th>
+                                    <th>Name</th>
+                                    <th>Price</th>
+                                    <th>Quantity</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                    $index = 1;
+                                    foreach($_SESSION as $products){
+                                        $rate = 0;
+                                        $qty = 0;
+                                        echo "<tr>";
+                                        echo "<td>".($index++)."</td>";
+                                        foreach($products as $key => $value){
+                                            if($key == 0){
+                                                echo "<td>" .$value. "</td>";
+                                            }else if ($key == 1){
+                                                echo "<td> Rs. " .$value. "</td>";
+                                                $rate = $value;
+                                            }else {
+                                                echo "<td>" .$value. "</td>";
+                                            }
+                                        }
+                                        echo "</tr>";
+                                    }
+                                ?>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
-
             </div>
         </div>
 

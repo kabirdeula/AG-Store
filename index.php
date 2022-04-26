@@ -73,7 +73,7 @@ require 'config.inc.php';
 									</span>
                                 </div>
                             </li>
-                            <li class="shopping-cart"><a href="#" class="cart"><span><small>0</small><i class="icon-shopping-cart"></i></span></a></li>
+                            <li class="shopping-cart"><a href="./addToCart.php" class="cart"><span><small>0</small><i class="icon-shopping-cart"></i></span></a></li>
                         </ul>
                     </div>
                 </div>
@@ -207,8 +207,8 @@ require 'config.inc.php';
                             <div class="product-grid" style="background-image:url(./images/products/<?php echo $row['productPhoto']?>);">
                                 <div class="inner">
                                     <p>
-                                        <a href="single.html" class="icon"><i class="icon-shopping-cart"></i></a>
-                                        <?php echo '<a href="./single.php?productID='. $row['productID'].'" class="icon"><i class="icon-eye"></i></a>';?>
+                                        <?php echo '<a href="./addToCart.php?productID='. $row['productID'] .'" class="icon" name="addCart"><i class="icon-shopping-cart"></i></a>';?>
+                                        <?php echo '<a href="./single.php?productID='. $row['productID'] .'" class="icon"><i class="icon-eye"></i></a>';?>
                                     </p>
                                 </div>
                             </div>
