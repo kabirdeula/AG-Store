@@ -274,6 +274,7 @@ $categoryCount = $count4 -> fetch_array();
                     <!-- /.container-fluid -->
 
                 </div>
+            </div>
                 <!-- End of Main Content -->
 
                 <!-- Footer -->
