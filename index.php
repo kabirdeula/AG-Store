@@ -1,6 +1,33 @@
 <?php
+
 session_start();
+
 require 'config.inc.php';
+
+if(isset($_POST["add"])){
+    if(isset($_SESSION['cart'])){
+        $itemArrayID = array_column($_SESSION['cart'], "productID");
+
+        if(in_array($_POST['productID'], $itemArrayID)){
+
+        }else{
+            $count = count($_SESSION['cart']);
+            $itemArray = array(
+                'productID' => $_POST["productID"]
+            );
+
+            $_SESSION['cart'][$count] = $itemArray;
+            
+        }
+            
+    }else{
+        $itemArray = array(
+            'productID' => $_POST["productID"]
+        );
+
+        $_SESSION['cart'][0] = $itemArray;
+    }
+}
 ?>
 <!DOCTYPE HTML>
 <html>
