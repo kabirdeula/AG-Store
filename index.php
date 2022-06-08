@@ -73,7 +73,7 @@ require 'config.inc.php';
 									</span>
                                 </div>
                             </li>
-                            <li class="shopping-cart"><a href="./addToCart.php" class="cart"><span><small>0</small><i class="icon-shopping-cart"></i></span></a></li>
+                            <li class="shopping-cart"><a href="./viewCart.php" class="cart"><span><small><?php echo (isset($_SESSION['cart'])) ? count($_SESSION['cart']) : 0;?></small><i class="icon-shopping-cart"></i></span></a></li>
                         </ul>
                     </div>
                 </div>
@@ -187,45 +187,8 @@ require 'config.inc.php';
                 </div>
             </div>
         </div>
-        <div id="fh5co-product">
-            <div class="container">
-                <div class="row animate-box">
-                    <div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
-                        <span>Cool Stuff</span>
-                        <h2>Products.</h2>
-                    </div>
-                </div>
-                <div class="row productList">
-                <?php 
-                    $sql = "SELECT * FROM products;";
-                    if($result = $conn -> query($sql)){
-                        if($result -> num_rows > 0){
-                            while($row = $result -> fetch_array()){?>
-                    <div class="col-md-4 text-center">
-                        <div class="product">
-                            
-                            <div class="product-grid" style="background-image:url(./images/products/<?php echo $row['productPhoto']?>);">
-                                <div class="inner">
-                                    <p>
-                                        <?php echo '<a href="./addToCart.php?productID='. $row['productID'] .'" class="icon" name="addCart"><i class="icon-shopping-cart"></i></a>';?>
-                                        <?php echo '<a href="./single.php?productID='. $row['productID'] .'" class="icon"><i class="icon-eye"></i></a>';?>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="desc">
-                                <h3><?php echo '<a href="./single.php?productID='. $row['productID'].'">'.$row['productName'].'</a>';?></h3>
-                                <span class="price">Rs. <?php echo $row['productPrice'];?></span>
-                            </div>
-                        </div>
-                    </div>
-                <?php 
-                            }
-                        }
-                    }
-                ?>
-                </div>
-            </div>
-        </div>
+        
+        <?php include './shop.php';?>
 
         <div id="fh5co-testimonial" class="fh5co-bg-section">
             <div class="container">

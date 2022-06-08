@@ -76,8 +76,7 @@ session_start();
 									</span>
                                 </div>
                             </li>
-                            <li class="shopping-cart"><a href="./viewCart.php" class="cart"><span><small>0</small><i
-											class="icon-shopping-cart"></i></span></a></li>
+                            <li class="shopping-cart"><a href="./viewCart.php" class="cart"><span><small><?php echo (isset($_SESSION['cart'])) ? count($_SESSION['cart']) : 0;?></small><i class="icon-shopping-cart"></i></span></a></li>
                         </ul>
                     </div>
                 </div>
