@@ -2,6 +2,16 @@
 include('config.inc.php');
 session_start();
 
+if(isset($_SESSION["loggedIn"]) && $_SESSION["loggedIn"] === true){
+    header("location: ./index.php");
+    exit;
+}
+
+if(isset($_SESSION["adminlog"]) && $_SESSION["adminlog"] === true){
+    header("location: ./admin/index.php");
+    exit;
+}
+
 $message = "";
 $usernameError = "";
 $passwordError = "";

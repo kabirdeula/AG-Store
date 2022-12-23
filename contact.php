@@ -1,6 +1,8 @@
 <?php
-require 'config.inc.php';
+
 session_start();
+
+require 'config.inc.php';
 
 $fNameError = $lNameError = $emailError = $subjectError = $messageError = "";
 
@@ -100,7 +102,7 @@ if(isset($_POST['submit'])){
                             <li><a href="product.php">Shop</a></li>
                             <?php 
                             if($_SESSION['loggedIn']){
-                                echo '<li class="has-dropdown">'. $_SESSION['userName']. '</li>';
+                                echo '<li>'. $_SESSION['userName']. '</li>';
                                 echo '<li><a href="logout.php">Log Out</a></li>';
                             } else{
                                 echo '<li><a href="login.php">Login</a></li>';
@@ -117,7 +119,7 @@ if(isset($_POST['submit'])){
 									</span>
                                 </div>
                             </li>
-                            <li class="shopping-cart"><a href="#" class="cart"><span><small>0</small><i class="icon-shopping-cart"></i></span></a></li>
+                            <li class="shopping-cart"><a href="./viewCart.php" class="cart"><span><small><?php echo (isset($_SESSION['cart'])) ? count($_SESSION['cart']) : 0;?></small><i class="icon-shopping-cart"></i></span></a></li>
                         </ul>
                     </div>
                 </div>

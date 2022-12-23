@@ -1,5 +1,18 @@
 <?php
 session_start();
+
+require_once "./config.inc.php";
+
+
+if(isset($_POST["Remove"])){
+    foreach($_SESSION['cart'] as $key => $value){
+        if($value["productName"] == $_POST["productName"]){
+            unset($_SESSION['cart'][$key]);
+            $_SESSION['cart'] = array_values($_SESSION['cart']);
+        }
+    }
+}
+
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -7,7 +20,7 @@ session_start();
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>About us</title>
+    <title>Cart</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="AG Store is an ecommerce website or an online based business that sells handmade items and diy items." />
     <meta name="keywords" content="agstore, handmade, diy, ecommerce, kabirdeula, bijinamaharjan, aayushamaharjan" />
@@ -76,96 +89,77 @@ session_start();
 									</span>
                                 </div>
                             </li>
-                            <li class="shopping-cart"><a href="./viewCart.php" class="cart"><span><small><?php echo (isset($_SESSION['cart'])) ? count($_SESSION['cart']) : 0;?></small><i class="icon-shopping-cart"></i></span></a></li>
+                            <li class="shopping-cart"><a href="./viewCart.php" class="cart"><span><small><?php echo count($_SESSION['cart']);?></small><i
+											class="icon-shopping-cart"></i></span></a></li>
                         </ul>
                     </div>
                 </div>
 
             </div>
         </nav>
-
-        <header id="fh5co-header" class="fh5co-cover fh5co-cover-sm" role="banner" style="background-image:url(images/img_bg_6.jpg);">
-            <div class="overlay"></div>
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-8 col-md-offset-2 text-center">
-                        <div class="display-t">
-                            <div class="display-tc animate-box" data-animate-effect="fadeIn">
-                                <h1>About Us</h1>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </header>
-
+        
         <div id="fh5co-about">
             <div class="container">
                 <div class="about-content">
-                    <div class="row animate-box">
-                        <div class="col-md-6">
-                            <div class="desc">
-                                <h3>Company History</h3>
-                                <p>AG Store was established as an inspiration business to start something new and small during the Lockdown.</p>
-                                <p>A way to sell the items that were made during the Lockdown period in order to spend the time. The AG Store was created.
-                                </p>
-                            </div>
-                            <div class="desc">
-                                <h3>Mission &amp; Vision</h3>
-                                <p>AG-Store is an online store that sells high-quality handmade things at an affordable price. When you buy artisan-crafted items, you're also supporting the artisans' craft talent. In general, something that is machine made
-                                    is something that is made in large quantities. </p>
-                                <p>Handmade items are always handcrafted with a lot of love, care, and attention to detail in order to create something unique. Handmade items are always crafted with a lot of love, care, and attention to detail in order to
-                                    create something unique and treasured.
-                                </p>
-                            </div>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <form action="./viewCart.php" method="post">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>S.No.</th>
+                                            <th>Name</th>
+                                            <th>Price</th>
+                                            <th>Quantity</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    <?php 
+                                        if(isset($_SESSION['cart'])){
+                                            $productID = array_column($_SESSION['cart'],'productID');
+                                            $sql = "SELECT * FROM products";
+                                            $result = $conn -> query($sql);
+                                            $i = 1;
+                                            while($row = $result -> fetch_assoc()){
+                                                foreach($productID as $ID){
+                                                    if($row["productID"] == $ID){
+                                                        $totalPrice = $totalPrice + (int)$row['productPrice'];
+                                    ?>            
+                                        <tr>
+                                            <td><?php echo $i++;?></td>
+                                            <td><?php echo $row['productName'];?></td>
+                                            <td><?php echo $row['productPrice'];?></td>
+                                            <td>
+                                                <button type="button" class="icon-plus"></button>
+                                                1
+                                                <button type="button" class="icon-minus"></button>
+                                            </td>
+                                            <td>
+                                                <button>Buy Now</button>
+                                                <!-- <button name="Remove">Remove</button> -->
+                                                <input type="submit" value="Remove" name="Remove">
+                                                <input type="hidden" name="productID" value="<?php echo $productID;?>">
+                                                <!-- <?php echo $test, $testID;?> -->
+                                            </td>
+                                        </tr>
+                                    <?php
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    ?>
+                                    </tbody>
+                                </table>
+                            </form>
+                            
                         </div>
-                        <div class="col-md-6">
-                            <img class="img-responsive" src="images/img_bg_10.jpg" alt="about">
-                        </div>
-                    </div>
-                </div>
-                <div class="row animate-box">
-                    <div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
-                        <span>Productive Staff</span>
-                        <h2>Meet Our Team</h2>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4 col-sm-4 animate-box" data-animate-effect="fadeIn">
-                        <div class="fh5co-staff">
-                            <img src="images/person4.jpg" alt="Free HTML5 Templates by gettemplates.co">
-                            <h3>Aayusha Maharjan</h3>
-                            <strong class="role">Owner</strong>
-                            <p>AG Store was the dream of mine to sell all the products in made by my hand to the public.</p>
-                            <ul class="fh5co-social-icons">
-                                <li><a href="#"><i class="icon-facebook"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-sm-4 animate-box" data-animate-effect="fadeIn">
-                        <div class="fh5co-staff">
-                            <img src="images/person5.jpg" alt="Free HTML5 Templates by gettemplates.co">
-                            <h3>Bijina Maharjan</h3>
-                            <strong class="role">Frontend Designer</strong>
-                            <p>I love CSS.</p>
-                            <ul class="fh5co-social-icons">
-                                <li><a href="#"><i class="icon-facebook"></i></a></li>
-                                <li><a href="#"><i class="icon-github"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-sm-4 animate-box" data-animate-effect="fadeIn">
-                        <div class="fh5co-staff">
-                            <img src="images/person6.jpg" alt="Free HTML5 Templates by gettemplates.co">
-                            <h3>Kabir Deula</h3>
-                            <strong class="role">Backend Developer</strong>
-                            <p>Yes</p>
-                            <ul class="fh5co-social-icons">
-                                <li><a href="#"><i class="icon-facebook"></i></a></li>
-                                <li><a href="#"><i class="icon-github"></i></a></li>
-                            </ul>
+                        <div class="col-md-4">
+                            <h1 class="h4 text-secondary">Total Price:</h1>
+                            <p class="h2 price"><?php echo $totalPrice;?></p>
                         </div>
                     </div>
+                        
                 </div>
             </div>
         </div>

@@ -1,7 +1,42 @@
 <?php
+
 session_start();
+
 require 'config.inc.php';
+
+if(isset($_POST["add"])){
+
+    if(isset($_SESSION['loggedIn'])){
+ 
+        if(isset($_SESSION['cart'])){
+ 
+            $itemArrayID = array_column($_SESSION['cart'], "productID");
+    
+            if(in_array($_POST['productID'], $itemArrayID)){
+    
+            }else{
+ 
+                $count = count($_SESSION['cart']);
+                $itemArray = array(
+                    'productID' => $_POST["productID"]
+                );
+    
+                $_SESSION['cart'][$count] = $itemArray;               
+            }
+        }else{
+            
+            $itemArray = array(
+                'productID' => $_POST["productID"]
+            );
+            $_SESSION['cart'][0] = $itemArray;
+        }
+    }else{
+        header("location: ./login.php");
+        exit();
+    }
+}
 ?>
+
 <!DOCTYPE HTML>
 <html>
 
@@ -42,7 +77,7 @@ require 'config.inc.php';
 
 <body>
 
-    <div class="fh5co-loader"></div>
+    <!-- <div class="fh5co-loader"></div> -->
 
     <div id="page" class="product-screen">
         <nav class="fh5co-nav" role="navigation">
@@ -77,7 +112,7 @@ require 'config.inc.php';
 									</span>
                                 </div>
                             </li>
-                            <li class="shopping-cart"><a href="#" class="cart"><span><small>0</small><i
+                            <li class="shopping-cart"><a href="./viewCart.php" class="cart"><span><small><?php echo (isset($_SESSION['cart'])) ? count($_SESSION['cart']) : 0;?></small><i
 											class="icon-shopping-cart"></i></span></a></li>
                         </ul>
                     </div>
@@ -100,45 +135,8 @@ require 'config.inc.php';
             </div>
         </header>
 
-        <div id="fh5co-product" class="product-screen-container">
-            <div class="container">
-                <div class="row animate-box">
-                    <div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
-                        <span>Cool Stuff</span>
-                        <h2>Products.</h2>
-                    </div>
-                </div>
-                <div class="row productList">
-                <?php 
-                    $sql = "SELECT * FROM products;";
-                    if($result = $conn -> query($sql)){
-                        if($result -> num_rows > 0){
-                            while($row = $result -> fetch_array()){?>
-                    <div class="col-md-4 text-center">
-                        <div class="product">
-                            <div class="product-grid" style="background-image:url(images/<?php echo $row['productPhoto']?>);">
-                                <div class="inner">
-                                    <p>
-                                        <a href="single.html" class="icon"><i class="icon-shopping-cart"></i></a>
-                                        <?php echo '<a href="./single.php?productID='. $row['productID'].'" class="icon"><i class="icon-eye"></i></a>';?>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="desc">
-                                <h3><?php echo '<a href="./single.php?productID='. $row['productID'].'">'.$row['productName'].'</a>';?></h3>
-                                <span class="price">Rs. <?php echo $row['productPrice'];?></span>
-                            </div>
-                        </div>
-                    </div>
-                    <?php 
-                                        }
-                                    }
-                                }
-                            ?>
-                </div>
-            </div>
+        <?php include './shop.php'; ?>
 
-        </div>
         <footer id="fh5co-footer" role="contentinfo">
             <div class="container">
                 <div class="row row-pb-md">

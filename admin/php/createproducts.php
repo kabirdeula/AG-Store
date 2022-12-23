@@ -1,12 +1,23 @@
 <?php
 include('config.inc.php');
-$productNameError = $productDescError = $productPriceError = $productPhotoError = $cIDError = ' ';
+$productNameError = $productDescError = $productPriceError = $productPhotoError = $cIDError = $qtyError = ' ';
+$sql = "SELECT * FROM categories";
+$allCategory = mysqli_query($conn, $sql);
+
 if(isset($_POST['register'])){
     $productName = $_POST['productName'];
     $productDesc = $_POST['productDesc'];
     $productPrice = $_POST['productPrice'];
     $productPhoto = $_POST['productPhoto'];
+    $productQty = $_POST['productQty'];
     $cID = $_POST['categoryID'];
+    $target_file = "/srv/http/AG-Store/images/products/";
+    $productPhoto = $_FILES['productPhoto']['name'];
+    $file_type = $_FILES['productPhoto']['type'];
+    $file_size = $_FILES['productPhoto']['size'];
+    $file_temp = $_FILES['productPhoto']['tmp_name'];
+
+    move_uploaded_file($file_temp,$target_file.$file_name);
 
     if (empty($productName)){
         $productNameError = "Product Name can't be blank.";
@@ -22,7 +33,12 @@ if(isset($_POST['register'])){
     }
 
     if(empty($productPhoto)){
-        $productPhotoError = "Product Photo Location can't be blank.";
+        $productPhotoError = "Product Photo can't be blank.";
+        $error = true;
+    }
+
+    if(empty($productQty)){
+        $productQty = "Product Quantity can't be blank.";
         $error = true;
     }
 
@@ -32,17 +48,16 @@ if(isset($_POST['register'])){
     }
 
     if(!$error){
-        $sql = "INSERT INTO products(productName, productDesc, productPrice, productPhoto, categoryID)VALUES('$productName', '$productDesc', '$productPrice', '$productPhoto', '$cID')";
-        if (mysqli_query($conn, $sql)) {
+        $sqlInsert = "INSERT INTO products(productName, productDesc, productPrice, productPhoto, categoryID, qty)VALUES('$productName', '$productDesc', '$productPrice', '$productPhoto', '$cID', '$productQty')";
+        if (mysqli_query($conn, $sqlInsert)) {
             echo '<script type ="text/JavaScript">';  
             echo 'alert("Data Inserted Successfully")';  
             echo '</script>';
             header("location: ../products.php");  
             
         } else {
-            echo "Error: " . $sql . ":-" . mysqli_error($conn);
+            echo "Error: " . $sqlInsert . ":-" . mysqli_error($conn);
         }
-        mysqli_close($conn);
     }
 }
 
@@ -76,24 +91,44 @@ if(isset($_POST['register'])){
                             <div class="text-center">
                                 <h1 class="h4 text-gray-900 mb-4">Add Product</h1>
                             </div>
-                            <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" name="users" method="POST">
+                            <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" name="users" method="POST" enctype="multipart/form-data">
                                 <div class="form-group">
                                     <input type="text" name="productName" placeholder="Product Name" class="form-control">
+                                    <span class="text-danger"><?php echo $productNameError?></span>
                                 </div>
                                 <div class="form-group">
                                     <textarea name="productDesc" id="productDesc" class="form-control" placeholder="Product Description"></textarea>
+                                    <span class="text-danger"><?php echo $productDescError?></span>
                                 </div>
                                 <div class="form-group row">
-                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                    <div class="col-sm-8 mb-3 mb-sm-0 custom-file">
+                                        <label for="productUpload" class="custom-file-label form-control">Upload Product Image</label>
+                                        <input type="file" name="productPhoto" id="image" class="custom-file-input">
+                                        <span class="text-danger"><?php echo $productPhotoError?></span>
+                                    </div>
+                                    <div class="col-sm-4">
                                         <input type="number" name="productPrice" placeholder="Product Price" class="form-control">
+                                        <span class="text-danger"><?php echo $productPriceError?></span>
                                     </div>
-                                    <div class="col-sm-6">
-                                        <input type="number" name="categoryID" id="categoryID" placeholder="Category ID" class="form-control">
-                                    </div>
+                                    
                                 </div>
                                 
-                                <div class="form-group">
-                                    <input type="text" name="productPhoto" placeholder="Product Photo" class="form-control">
+                                <div class="form-group row">
+                                    <div class="col-sm-8 mb-3 mb-sm-0">
+                                        <select name="categoryID" id="categoryID" class="form-control">
+                                            <option disabled selected hidden>Category Name</option>
+                                            <?php
+                                                while($row = mysqli_fetch_array($allCategory, MYSQLI_ASSOC)){?>
+                                                    <option value="<?php echo $row["categoryID"]?>"><?php echo $row["categoryName"]?></option>
+                                                <?php
+                                                }
+                                            ?>
+                                        </select>
+                                        <span class="text-danger"><?php echo $cIDError?></span>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <input type="number" name="productQty" id="productQty" class="form-control" placeholder="Quantity">
+                                    </div>
                                 </div>
                                 <input type="submit" class="btn btn-success btn-block" value="Submit" name="register">
                             </form>
@@ -105,5 +140,11 @@ if(isset($_POST['register'])){
     </div>
 
 </body>
-
+<script>
+// Add the following code if you want the name of the file appear on select
+$(".custom-file-input").on("change", function() {
+  var fileName = $(this).val().split("\\").pop();
+  $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+});
+</script>
 </html>
